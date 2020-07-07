@@ -28,6 +28,9 @@ export class ChatComponent implements OnInit {
         this.messages.push(message);
 
       })
+      this.message.type ='NEW_USER';
+      console.log(this.message);
+      this.client.publish({destination: '/app/message',body: JSON.stringify(this.message)});
     }
     this.client.onDisconnect = (frame) =>{
       console.log('Desconectados: ' + !this.client.connected + ':' + frame);
@@ -43,7 +46,9 @@ export class ChatComponent implements OnInit {
     this.client.deactivate();
   }
   enviarMensaje():void{
+    this.message.type ='MESSAGE';
     this.client.publish({destination: '/app/message',body: JSON.stringify(this.message)});
+    console.log(this.message);
     this.message.text= '';
   }
 

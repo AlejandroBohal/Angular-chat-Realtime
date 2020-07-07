@@ -1,8 +1,11 @@
 <div class="card mx-4 my-4">
   <div class="card-header mr-2">
     <ul class="nav nav-pills card-header-pills">
+      <li class="nav-item" *ngIf="!conectado">
+        <input type="text" [(ngModel)] ="message.username" class="form-control" placeholder="Escribe tu nombre" name="username" >
+      </li>
       <li class="nav-item">
-        <button class="btn btn-success" type="button" (click)= "conectar()" *ngIf="!conectado">
+        <button class="btn btn-success" type="button" (click)= "conectar()" *ngIf="!conectado" [disabled]="!message.username">
           Conectar
         </button>
       </li>
@@ -17,7 +20,8 @@
   <div class="card-body" style="overflow-y: scroll; height:360px" *ngIf="conectado">
     <ul class="list-group list-group-flush">
       <li class="list-group-item list-group-item-light" *ngFor="let message of messages">
-        {{message.date | date:'shortTime'}} : {{message.text}}
+        <span *ngIf="message.type =='NEW_USER'">{{message.date | date:'shortTime'}} @ {{message.text}} </span>
+        <span *ngIf="message.type =='MESSAGE'">{{message.date | date:'shortTime'}} {{message.username}} dice:<br> {{message.text}}</span>
       </li>
     </ul>
   </div>
