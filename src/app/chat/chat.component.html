@@ -1,0 +1,27 @@
+<div class="card mx-4 my-4">
+  <div class="card-header mr-2">
+    <ul class="nav nav-pills card-header-pills">
+      <li class="nav-item">
+        <button class="btn btn-success" type="button" (click)= "conectar()" *ngIf="!conectado">
+          Conectar
+        </button>
+      </li>
+      <li class="nav-item">
+        <button class="btn btn-warning" type="button" (click)= "desconectar()" *ngIf="conectado">
+          Cerrar chat
+        </button>
+      </li>
+    </ul>
+  </div>
+  <div class="card-body" style="overflow-y: scroll; height:360px" *ngIf="conectado">
+
+  </div>
+  <div class="card-footer" *ngIf="conectado">
+    <form class="form-inline">
+      <div class="form-group mx-3">
+        <input type="text" class="form-control" placeholder="Escribe un mensaje" name="text">
+        <button class="btn btn-primary" type="submit">Enviar</button>
+      </div>
+    </form>
+  </div>
+</div>
