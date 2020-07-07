@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "public": "dist/Angular-chat-Realtime",
+    "public": "dist/chat-app",
     "ignore": [
       "firebase.json",
       "**/.*",
