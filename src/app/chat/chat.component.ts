@@ -21,7 +21,7 @@ export class ChatComponent implements OnInit {
   ngOnInit(): void {
     this.client = new Client();
     this.client.webSocketFactory = ()=>{
-      return new SockJS("https://chat-storage-mdb.herokuapp.com//chat-websocket");
+      return new SockJS("https://chat-storage-mdb.herokuapp.com/chat-websocket");
     }
     this.client.onConnect = (frame) =>{
       this.conectado=true;
